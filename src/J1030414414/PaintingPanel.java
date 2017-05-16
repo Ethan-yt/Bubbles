@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 
 @SuppressWarnings("serial")
 public class PaintingPanel extends JPanel {
-	public ArrayList<Ball> balls = new ArrayList<Ball>();// ±£´æËùÓĞĞ¡Çò
+	public ArrayList<Ball> balls = new ArrayList<Ball>();// ä¿å­˜æ‰€æœ‰å°çƒ
 
 	public BufferedImage image;
 	public BufferedImage screenImage;
@@ -23,7 +23,7 @@ public class PaintingPanel extends JPanel {
 	public PaintingPanel() {
 
 		this.setLayout(null);
-		// ±£´æÆÁÄ»½ØÍ¼
+		// ä¿å­˜å±å¹•æˆªå›¾
 		try {
 			Robot robot = new Robot();
 			image = screenImage = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
@@ -32,9 +32,9 @@ public class PaintingPanel extends JPanel {
 			e1.printStackTrace();
 		}
 
-		DebugPanel debugPanel = new DebugPanel(balls);// fpsÃæ°å
+		DebugPanel debugPanel = new DebugPanel(balls);// fpsé¢æ¿
 
-		debugPanel.setBounds(0, 0, 300, 350);// ¹Ì¶¨´óĞ¡£¬Î»ÖÃ
+		debugPanel.setBounds(0, 0, 300, 350);// å›ºå®šå¤§å°ï¼Œä½ç½®
 		this.add(debugPanel);
 		new Thread(new Runnable() {
 
@@ -42,7 +42,7 @@ public class PaintingPanel extends JPanel {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(500);// Ã¿0.5Ãë¸üĞÂÒ»´Îfps
+						Thread.sleep(500);// æ¯0.5ç§’æ›´æ–°ä¸€æ¬¡fps
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -56,13 +56,13 @@ public class PaintingPanel extends JPanel {
 	}
 
 	public void startAddBallThread(Rectangle bounds) {
-		// µ¥¶À¿ª±ÙÒ»¸öÏß³ÌÌí¼ÓĞ¡Çò£¬ÒòÎªÃ¿Ìí¼ÓÒ»¸öÇòÒªÑÓÊ±£¬ÈôÔÚÖ÷Ïß³Ì»áÔì³É×èÈû
+		// å•ç‹¬å¼€è¾Ÿä¸€ä¸ªçº¿ç¨‹æ·»åŠ å°çƒï¼Œå› ä¸ºæ¯æ·»åŠ ä¸€ä¸ªçƒè¦å»¶æ—¶ï¼Œè‹¥åœ¨ä¸»çº¿ç¨‹ä¼šé€ æˆé˜»å¡
 		new Thread(new Runnable() {
 			public void run() {
-				// Ìí¼Ó10¸öĞ¡Çò
+				// æ·»åŠ 10ä¸ªå°çƒ
 				for (int i = 0; i < Bubbles.BALLNUMBER; i++) {
 					Random r = new Random();
-					// ÉèÖÃĞ¡Çò»ù±¾Î»ÖÃ
+					// è®¾ç½®å°çƒåŸºæœ¬ä½ç½®
 					Ball ball = new Ball(balls, bounds);
 					ball.setX(Bubbles.BALLRADIUS * 1.5);
 					ball.setY(Bubbles.BALLRADIUS * 1.5);
@@ -71,10 +71,10 @@ public class PaintingPanel extends JPanel {
 					// ball.setOpaque(true);
 					PaintingPanel.this.add(ball);
 
-					new Thread(ball).start();// Æô¶¯Ğ¡ÇòÏß³Ì
-					balls.add(ball);// Ìí¼ÓÒıÓÃ
+					new Thread(ball).start();// å¯åŠ¨å°çƒçº¿ç¨‹
+					balls.add(ball);// æ·»åŠ å¼•ç”¨
 					try {
-						Thread.sleep(1000);// Ã¿1ÃëÌí¼ÓÒ»¸öĞ¡Çò
+						Thread.sleep(1000);// æ¯1ç§’æ·»åŠ ä¸€ä¸ªå°çƒ
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -87,7 +87,7 @@ public class PaintingPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		// »­±³¾°
+		// ç”»èƒŒæ™¯
 		g2d.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
 	}
 }

@@ -19,28 +19,28 @@ import java.util.Random;
 import javax.swing.JComponent;
 
 /*
- * Ğ¡ÇòÀà
+ * å°çƒç±»
  * 
- * ¼Ì³Ğ×ÔJComponent - ¿ÉÒÔaddµ½JPanelÖĞ
- * ½Ó¿ÚRunnable - ¿ÉÒÔ±»Ïß³ÌÖ´ĞĞ
- * ±£´æÁËÃ¿¸öĞ¡ÇòµÄ»ù±¾ĞÅÏ¢
+ * ç»§æ‰¿è‡ªJComponent - å¯ä»¥addåˆ°JPanelä¸­
+ * æ¥å£Runnable - å¯ä»¥è¢«çº¿ç¨‹æ‰§è¡Œ
+ * ä¿å­˜äº†æ¯ä¸ªå°çƒçš„åŸºæœ¬ä¿¡æ¯
  */
 @SuppressWarnings("serial")
 public class Ball extends JComponent implements Runnable {
 
-	private static final double RATE = 1.5;// Ê±¼ä»»ËãÏµÊı£¬Ô½´óÃ¿Ö¡ÇòÔËĞĞ¾àÀëÔ½³¤
-	private static final double G = 0.005;// ÖØÁ¦¼ÓËÙ¶È³£Á¿
-	private int R = Bubbles.BALLRADIUS;// Çò°ë¾¶
-	private double vx, vy, x, y;// ÇòËÙ¶ÈÔÚx,yµÄ·ÖÁ¿ÒÔ¼°ÇòµÄ×ø±ê
-	private Rectangle wall;// ÆÁÄ»´óĞ¡
-	private ArrayList<Ball> balls;// Ğ¡ÇòµÄÒıÓÃ£¬±ãÓÚ¼ì²âÅö×²
-	private long time;// ÉÏÒ»Ö¡µÄÊ±¼ä
+	private static final double RATE = 1.5;// æ—¶é—´æ¢ç®—ç³»æ•°ï¼Œè¶Šå¤§æ¯å¸§çƒè¿è¡Œè·ç¦»è¶Šé•¿
+	private static final double G = 0.005;// é‡åŠ›åŠ é€Ÿåº¦å¸¸é‡
+	private int R = Bubbles.BALLRADIUS;// çƒåŠå¾„
+	private double vx, vy, x, y;// çƒé€Ÿåº¦åœ¨x,yçš„åˆ†é‡ä»¥åŠçƒçš„åæ ‡
+	private Rectangle wall;// å±å¹•å¤§å°
+	private ArrayList<Ball> balls;// å°çƒçš„å¼•ç”¨ï¼Œä¾¿äºæ£€æµ‹ç¢°æ’
+	private long time;// ä¸Šä¸€å¸§çš„æ—¶é—´
 
-	private Color color;// µ±Ç°ÇòµÄÑÕÉ«
-	private int colorCount;// ÑÕÉ«½¥±ä¶¯»­¼ÆÊı Ã¿10Ö¡½¥±äÒ»´Î
-	private float hue;// É«µ÷
+	private Color color;// å½“å‰çƒçš„é¢œè‰²
+	private int colorCount;// é¢œè‰²æ¸å˜åŠ¨ç”»è®¡æ•° æ¯10å¸§æ¸å˜ä¸€æ¬¡
+	private float hue;// è‰²è°ƒ
 
-	private int style = Bubbles.STYLE;// Ğ¡ÇòÑùÊ½£º0-ÎŞÉ«£¬1-Á¢Ìå£¬2-±âÆ½£¬3-windows
+	private int style = Bubbles.STYLE;// å°çƒæ ·å¼ï¼š0-æ— è‰²ï¼Œ1-ç«‹ä½“ï¼Œ2-æ‰å¹³ï¼Œ3-windows
 
 	// ----------getter and setter-------------
 	public void setVx(double d) {
@@ -89,13 +89,13 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * ¹¹Ôìº¯Êı ÒªÇóÌá¹©ÆäËûĞ¡ÇòµÄÒıÓÃ£¬ÆÁÄ»µÄ´óĞ¡
+	 * æ„é€ å‡½æ•° è¦æ±‚æä¾›å…¶ä»–å°çƒçš„å¼•ç”¨ï¼Œå±å¹•çš„å¤§å°
 	 */
 	public Ball(ArrayList<Ball> balls, Rectangle wall) {
 
 		this.balls = balls;
 		this.wall = wall;
-		this.time = System.nanoTime();// ¼ÇÂ¼µ±Ç°Ê±¼ä
+		this.time = System.nanoTime();// è®°å½•å½“å‰æ—¶é—´
 		if (Bubbles.DEBUG)
 			frameTime = System.currentTimeMillis();
 		Random r = new Random();
@@ -111,33 +111,33 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * Ğ¡Çò½ø³Ì Ã¿Ö¡Î¢µ÷µ±Ç°Ğ¡ÇòÑÕÉ«£¬¼ì²âÅö×²²¢¼ÆËãÏÂÒ»Ö¡Î»ÖÃ
+	 * å°çƒè¿›ç¨‹ æ¯å¸§å¾®è°ƒå½“å‰å°çƒé¢œè‰²ï¼Œæ£€æµ‹ç¢°æ’å¹¶è®¡ç®—ä¸‹ä¸€å¸§ä½ç½®
 	 */
 	@Override
 	public void run() {
 
-		// ËÀÑ­»·£¬Ã¿´ÎÑ­»·ÎªÒ»Ö¡
+		// æ­»å¾ªç¯ï¼Œæ¯æ¬¡å¾ªç¯ä¸ºä¸€å¸§
 		while (true) {
-			// ÑÕÉ«½¥±ä¶¯»­ Ã¿10Ö¡½¥±äÒ»´Î
+			// é¢œè‰²æ¸å˜åŠ¨ç”» æ¯10å¸§æ¸å˜ä¸€æ¬¡
 			if (colorCount == 10 && Bubbles.COLORCHANGE) {
 				changeColor();
 				colorCount = 0;
 			}
 
-			collision();// ¼ì²âÅö×²²¢¼ÆËãÏÂÒ»Ö¡
+			collision();// æ£€æµ‹ç¢°æ’å¹¶è®¡ç®—ä¸‹ä¸€å¸§
 
-			// °ë¾¶±»¸ü¸Äºó£¬µ÷ÕûĞ¡Çò°ë¾¶
+			// åŠå¾„è¢«æ›´æ”¹åï¼Œè°ƒæ•´å°çƒåŠå¾„
 			if (Bubbles.BALLRADIUS != R) {
 				R = Bubbles.BALLRADIUS;
 			}
-			// ÑùÊ½±»¸ü¸Äºó£¬µ÷ÕûĞ¡ÇòÑùÊ½
+			// æ ·å¼è¢«æ›´æ”¹åï¼Œè°ƒæ•´å°çƒæ ·å¼
 			if (Bubbles.STYLE != style) {
 				style = Bubbles.STYLE;
 			}
-			time = System.nanoTime();// ¼ÇÂ¼µ±Ç°Ê±¼ä
-			if (Bubbles.DEBUG)// debugÄ£Ê½µÄÖ¡¼ÆÊı£¬Í³¼Æfps
+			time = System.nanoTime();// è®°å½•å½“å‰æ—¶é—´
+			if (Bubbles.DEBUG)// debugæ¨¡å¼çš„å¸§è®¡æ•°ï¼Œç»Ÿè®¡fps
 				frameCount++;
-			if (Bubbles.COLORCHANGE)// ÑÕÉ«½¥±ä¶¯»­¼ÆÊı£¬Ã¿10Ö¡½¥±äÒ»´Î
+			if (Bubbles.COLORCHANGE)// é¢œè‰²æ¸å˜åŠ¨ç”»è®¡æ•°ï¼Œæ¯10å¸§æ¸å˜ä¸€æ¬¡
 				colorCount++;
 			try {
 				Thread.sleep(Bubbles.DELAY);
@@ -148,36 +148,36 @@ public class Ball extends JComponent implements Runnable {
 		}
 	}
 
-	// ÑÕÉ«½¥±ä¶¯»­
+	// é¢œè‰²æ¸å˜åŠ¨ç”»
 	private void changeColor() {
-		hue += 0.005;// É«µ÷Î¢µ÷
+		hue += 0.005;// è‰²è°ƒå¾®è°ƒ
 		this.color = new Color(Color.HSBtoRGB(hue, 0.7F, 0.7F));
 	}
 
 	/*
-	 * ¼ì²âĞ¡ÇòÅö×²²¢¼ÆËãÏÂÒ»Ö¡µÄÎ»ÖÃ
+	 * æ£€æµ‹å°çƒç¢°æ’å¹¶è®¡ç®—ä¸‹ä¸€å¸§çš„ä½ç½®
 	 */
 	private void collision() {
-		// ÓÉÓÚĞ¡ÇòÅö×²ÒªÒıÆğËÙ¶È£¬Î»ÖÃµÄ¸Ä±ä£¬ÎªÁËÏß³Ì°²È«¼ÓÈëÏß³ÌÍ¬²½Óï¾ä
+		// ç”±äºå°çƒç¢°æ’è¦å¼•èµ·é€Ÿåº¦ï¼Œä½ç½®çš„æ”¹å˜ï¼Œä¸ºäº†çº¿ç¨‹å®‰å…¨åŠ å…¥çº¿ç¨‹åŒæ­¥è¯­å¥
 
 		synchronized (balls) {
-			// tÎªÉÏÒ»Ö¡ºÍµ±Ç°Ö¡Ê±¼ä²î
+			// tä¸ºä¸Šä¸€å¸§å’Œå½“å‰å¸§æ—¶é—´å·®
 			double t = RATE * (System.nanoTime() - time) / 10000000;
 			if (Bubbles.GARVITY)
 				vy += G * t;
-			// ¼ì²âÇ½±ÚÅö×²
+			// æ£€æµ‹å¢™å£ç¢°æ’
 			wallCollision(t);
-			// ¼ì²âÊÇ·ñÓëÆäËûĞ¡ÇòÅö×²
+			// æ£€æµ‹æ˜¯å¦ä¸å…¶ä»–å°çƒç¢°æ’
 			for (int i = 0; i < balls.size(); i++) {
 				Ball ball = balls.get(i);
 				if (ball == this || ball == null)
 					continue;
 				ballCollision(ball, t);
 			}
-			// ¼ÆËãÏÂÒ»Ö¡µÄÎ»ÖÃ
+			// è®¡ç®—ä¸‹ä¸€å¸§çš„ä½ç½®
 			x = getNextX(t);
 			y = getNextY(t);
-			// ÒÆ¶¯Ğ¡Çò
+			// ç§»åŠ¨å°çƒ
 			if (Bubbles.SHADOW) {
 				this.setBounds((int) x - R - 10, (int) y - R - 10, (int) (R * 2.4) + 20, (int) (R * 2.5) + 20);
 			} else {
@@ -187,47 +187,47 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * Ğ¡ÇòÓëĞ¡ÇòµÄÅö×²
+	 * å°çƒä¸å°çƒçš„ç¢°æ’
 	 */
 	public void ballCollision(Ball ball, double t) {
 
-		// ÏÂÒ»Ö¡Ğ¡ÇòÓëĞ¡ÇòÖ®¼äµÄ¾àÀë
+		// ä¸‹ä¸€å¸§å°çƒä¸å°çƒä¹‹é—´çš„è·ç¦»
 		double dx = ball.getNextX(t) - this.getNextX(t);
 		double dy = ball.getNextY(t) - this.getNextY(t);
 		double nextDis = Math.sqrt(dx * dx + dy * dy);
-		// µ±Ç°Ö¡Ğ¡ÇòÓëĞ¡ÇòÖ®¼äµÄ¾àÀë
+		// å½“å‰å¸§å°çƒä¸å°çƒä¹‹é—´çš„è·ç¦»
 		dx = ball.x - x;
 		dy = ball.y - y;
 		double thisDis = Math.sqrt(dx * dx + dy * dy);
 
-		// ÈôÏÂÒ»Ö¡Ğ¡Çò¼ä¾àĞ¡ÓÚR*2 ÇÒ µ±Ç°Ö¡Ğ¡Çò¾àÀë´óÓÚR*2
-		// Ôò½«Òª·¢ÉúÅö×²
+		// è‹¥ä¸‹ä¸€å¸§å°çƒé—´è·å°äºR*2 ä¸” å½“å‰å¸§å°çƒè·ç¦»å¤§äºR*2
+		// åˆ™å°†è¦å‘ç”Ÿç¢°æ’
 		if (nextDis < R * 2 && thisDis > R * 2) {
-			// Ê×ÏÈ¸Ä±äÁ½ÇòµÄÑÕÉ«
+			// é¦–å…ˆæ”¹å˜ä¸¤çƒçš„é¢œè‰²
 			this.hue = this.hue + 0.05F;
 			ball.hue = ball.hue + 0.05F;
 			this.color = new Color(Color.HSBtoRGB(hue, 0.7F, 0.7F));
 			ball.color = new Color(Color.HSBtoRGB(ball.hue, 0.7F, 0.7F));
-			// Î¢µ÷dxÒÔ±ã¼ÆËã£¨·ÖÄ¸²»¿ÉÎª0£©
+			// å¾®è°ƒdxä»¥ä¾¿è®¡ç®—ï¼ˆåˆ†æ¯ä¸å¯ä¸º0ï¼‰
 			if (dx == 0)
 				dx = 0.00001;
-			// ¼ÇÂ¼Á½ÇòÇòĞÄÁ¬Ïß¼Ğ½Ç
+			// è®°å½•ä¸¤çƒçƒå¿ƒè¿çº¿å¤¹è§’
 			double angle = Math.atan(dy / dx);
 
-			// Åö×²ºó£¬ballÔÚS2ÏµÖĞxÖáËÙ¶È¼Ç×ös2_vx2£¬yÖáËÙ¶È¼Ç×ös2_vy2¡£
-			// ballµÄxÖáËÙ¶È¼´ÎªthisµÄxÖáËÙ¶È¡£½«thisÁ½¸ö·ÖÁ¿vx£¬vyÍ¶Ó°µ½S2ÏµÖĞ¼´¿É¡£
-			// ballµÄyÖáËÙ¶È²»±ä£¬½«ballÁ½¸ö·ÖÁ¿vx£¬vyÍ¶Ó°ÖÁS2ÏµÖĞ¼´¿É¡£
+			// ç¢°æ’åï¼Œballåœ¨S2ç³»ä¸­xè½´é€Ÿåº¦è®°åšs2_vx2ï¼Œyè½´é€Ÿåº¦è®°åšs2_vy2ã€‚
+			// ballçš„xè½´é€Ÿåº¦å³ä¸ºthisçš„xè½´é€Ÿåº¦ã€‚å°†thisä¸¤ä¸ªåˆ†é‡vxï¼ŒvyæŠ•å½±åˆ°S2ç³»ä¸­å³å¯ã€‚
+			// ballçš„yè½´é€Ÿåº¦ä¸å˜ï¼Œå°†ballä¸¤ä¸ªåˆ†é‡vxï¼ŒvyæŠ•å½±è‡³S2ç³»ä¸­å³å¯ã€‚
 			double s2_vx2 = vx * Math.cos(angle) + vy * Math.sin(angle);
 			double s2_vy2 = -ball.vx * Math.sin(angle) + ball.vy * Math.cos(angle);
-			// Åö×²ºó£¬thisÔÚS2ÏµÖĞxÖáËÙ¶È¼Ç×ös2_vx1£¬yÖáËÙ¶È¼Ç×ös2_vy1¡£
-			// Çé¿öºÍÉÏÊöÇé¿öÀàËÆ£¬½»»»±äÁ¿¼´¿É¡£
+			// ç¢°æ’åï¼Œthisåœ¨S2ç³»ä¸­xè½´é€Ÿåº¦è®°åšs2_vx1ï¼Œyè½´é€Ÿåº¦è®°åšs2_vy1ã€‚
+			// æƒ…å†µå’Œä¸Šè¿°æƒ…å†µç±»ä¼¼ï¼Œäº¤æ¢å˜é‡å³å¯ã€‚
 			double s2_vx1 = ball.vx * Math.cos(angle) + ball.vy * Math.sin(angle);
 			double s2_vy1 = -vx * Math.sin(angle) + vy * Math.cos(angle);
 
-			// ½«ballÔÚS2ÏµÖĞµÄ±äÁ¿×ª»»ÖÁS1ÏµÖĞ¡£
+			// å°†ballåœ¨S2ç³»ä¸­çš„å˜é‡è½¬æ¢è‡³S1ç³»ä¸­ã€‚
 			ball.setVx(s2_vx2 * Math.cos(angle) - s2_vy2 * Math.sin(angle));
 			ball.setVy(s2_vx2 * Math.sin(angle) + s2_vy2 * Math.cos(angle));
-			// ½«thisÔÚS2ÏµÖĞµÄ±äÁ¿×ª»»ÖÁS1ÏµÖĞ¡£
+			// å°†thisåœ¨S2ç³»ä¸­çš„å˜é‡è½¬æ¢è‡³S1ç³»ä¸­ã€‚
 			vx = s2_vx1 * Math.cos(angle) - s2_vy1 * Math.sin(angle);
 			vy = s2_vx1 * Math.sin(angle) + s2_vy1 * Math.cos(angle);
 
@@ -235,14 +235,14 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * ¼ì²âÓëÇ½±ÚµÄÅö×²
+	 * æ£€æµ‹ä¸å¢™å£çš„ç¢°æ’
 	 */
 	public void wallCollision(double t) {
-		// ÏÂÒ»Ö¡µÄÎ»ÖÃ
+		// ä¸‹ä¸€å¸§çš„ä½ç½®
 		double nextX = this.getNextX(t);
 		double nextY = this.getNextY(t);
-		// µ±ÏÂÒ»Ö¡³¬³öÇ½±ÚÊ±£¬¼´½«·¢ÉúÅö×²
-		// ¸ù¾İÏà¹ØÍÆÂÛ£¬×ö³öÏàÓ¦µÄ¸Ä±ä¡££¨ÍÆµ¼¹ı³ÌÏê¼ûÎÄµµ£©
+		// å½“ä¸‹ä¸€å¸§è¶…å‡ºå¢™å£æ—¶ï¼Œå³å°†å‘ç”Ÿç¢°æ’
+		// æ ¹æ®ç›¸å…³æ¨è®ºï¼Œåšå‡ºç›¸åº”çš„æ”¹å˜ã€‚ï¼ˆæ¨å¯¼è¿‡ç¨‹è¯¦è§æ–‡æ¡£ï¼‰
 		if (nextX - R < 0 || nextX + R > wall.getWidth())
 			vx = -vx;
 		if (nextY - R < 0 || nextY + R > wall.getHeight())
@@ -250,86 +250,86 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * »æÖÆµ±Ç°Ğ¡Çò
+	 * ç»˜åˆ¶å½“å‰å°çƒ
 	 */
 	@Override
 	protected void paintComponent(Graphics arg0) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		super.paintComponent(arg0);
 		Graphics2D g2d = (Graphics2D) arg0;
-		// ¿¹¾â³İ
+		// æŠ—é”¯é½¿
 		if (Bubbles.ANTIALIASING) {
-			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);// ¿¹¾â³İ
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);// æŠ—é”¯é½¿
 		}
 
-		// »æÖÆÒõÓ°
+		// ç»˜åˆ¶é˜´å½±
 		if (Bubbles.SHADOW && style != 0)
 			drawShadow(g2d);
-		// »æÖÆĞ¡Çò
+		// ç»˜åˆ¶å°çƒ
 		drawBall(g2d);
 	}
 
 	/*
-	 * »æÖÆĞ¡Çò
+	 * ç»˜åˆ¶å°çƒ
 	 */
 	private void drawBall(Graphics2D g2d) {
 		Ellipse2D ballEllipse = new Ellipse2D.Double(10, 10, R * 2, R * 2);
 		switch (style) {
-		case 0:// ÎŞÉ«Ä£Ê½£¬Ö»»æÖÆ±ß¿ò
+		case 0:// æ— è‰²æ¨¡å¼ï¼Œåªç»˜åˆ¶è¾¹æ¡†
 			g2d.setColor(color);
 			g2d.setStroke(new BasicStroke(2));
 			g2d.draw(ballEllipse);
 			break;
-		case 1:// Á¢ÌåÄ£Ê½
+		case 1:// ç«‹ä½“æ¨¡å¼
 		{
 			Point2D center = new Point2D.Double(10 + R, 10 + R);
-			// ½¹µãÆ«ÒÆ£¬ÖÆÔì¹âÔ´Ğ§¹û
+			// ç„¦ç‚¹åç§»ï¼Œåˆ¶é€ å…‰æºæ•ˆæœ
 			Point2D focus = new Point2D.Double(10 + R * 0.6, 10 + R * 0.6);
 			float[] dist = { 0f, 1.0f };
-			// ÓÉ°×É«½¥±äÖÁĞ¡Çòµ±Ç°ÑÕÉ«
+			// ç”±ç™½è‰²æ¸å˜è‡³å°çƒå½“å‰é¢œè‰²
 			Color[] colors = { Color.white, color };
-			// ´´½¨½¥±ä
+			// åˆ›å»ºæ¸å˜
 			Paint ballPaint = new RadialGradientPaint(center, R, focus, dist, colors, CycleMethod.NO_CYCLE);
 			g2d.setPaint(ballPaint);
 			g2d.fill(ballEllipse);
 			break;
 		}
-		case 2:// ±âÆ½Ä£Ê½£¬ÓÃ´¿É«Ìî³äĞ¡Çò
+		case 2:// æ‰å¹³æ¨¡å¼ï¼Œç”¨çº¯è‰²å¡«å……å°çƒ
 			g2d.setColor(color);
 			g2d.setPaint(null);
 			g2d.fill(ballEllipse);
 			break;
-		case 3:// windowsÄ£Ê½£¬ÑùÊ½½ÏÎª¸´ÔÓ£¬·ÖÈı²½
+		case 3:// windowsæ¨¡å¼ï¼Œæ ·å¼è¾ƒä¸ºå¤æ‚ï¼Œåˆ†ä¸‰æ­¥
 		{
-			// µÚÒ»²½£¬»­³öĞ¡Çò
+			// ç¬¬ä¸€æ­¥ï¼Œç”»å‡ºå°çƒ
 			Point2D center = new Point2D.Double(10 + R, 10 + R);
 			float[] dist = { 0.5f, 1.0f };
 			Color c0 = new Color(color.getRed(), color.getGreen(), color.getBlue(), 0);
-			// ÓÉÑÕÉ«ÏàÍ¬ÍêÈ«Í¸Ã÷£¬½¥±äÖÁĞ¡ÇòÑÕÉ«
+			// ç”±é¢œè‰²ç›¸åŒå®Œå…¨é€æ˜ï¼Œæ¸å˜è‡³å°çƒé¢œè‰²
 			Color[] colors = { c0, color };
-			// ´´½¨½¥±ä
+			// åˆ›å»ºæ¸å˜
 			Paint ballPaint = new RadialGradientPaint(center, R * 1.4F, dist, colors, CycleMethod.NO_CYCLE);
 			g2d.setPaint(ballPaint);
 			g2d.fill(ballEllipse);
 		} {
-			// µÚ¶ş²½£¬»­·´¹â
+			// ç¬¬äºŒæ­¥ï¼Œç”»åå…‰
 			Point2D center = new Point2D.Double(10 + R, 10 + R);
 			float[] dist = { 0.5f, 1.0f };
 			Color c0 = new Color(255, 255, 255, 0);
 			Color c1 = new Color(255, 255, 255);
-			// ÓÉ°×É«Í¸Ã÷½¥±äÖÁ°×É«
+			// ç”±ç™½è‰²é€æ˜æ¸å˜è‡³ç™½è‰²
 			Color[] colors = { c0, c1 };
-			// ´´½¨½¥±ä
+			// åˆ›å»ºæ¸å˜
 			Paint lightPaint = new RadialGradientPaint(center, R * 1.6F, dist, colors, CycleMethod.NO_CYCLE);
-			// ½¨Á¢Ò»¸öÍÖÔ²£¬Ö»ÔÚÍÖÔ²·¶Î§ÄÚ»æÖÆ·´¹â
+			// å»ºç«‹ä¸€ä¸ªæ¤­åœ†ï¼Œåªåœ¨æ¤­åœ†èŒƒå›´å†…ç»˜åˆ¶åå…‰
 			Ellipse2D lightEllipse = new Ellipse2D.Double(10 + R * 0.14F, 10 + R * 0.02F, R * 1.72F, R * 1.4F);
 			g2d.setPaint(lightPaint);
 			g2d.fill(lightEllipse);
 		} {
-			// µÚÈı²½£¬»­¸ß¹â
-			// ½¨Á¢¸ß¹âµÄÍÖÔ²
+			// ç¬¬ä¸‰æ­¥ï¼Œç”»é«˜å…‰
+			// å»ºç«‹é«˜å…‰çš„æ¤­åœ†
 			Ellipse2D lightEllipse = new Ellipse2D.Double(10 + R * 0.30, 10 + R * 0.30, R * 0.34, R * 0.11);
-			// Ğı×ªÍÖÔ²
+			// æ—‹è½¬æ¤­åœ†
 			AffineTransform transform = AffineTransform.getRotateInstance(-9 * Math.PI / 40, 10 + R * 0.47,
 					10 + R * 0.355);
 			Shape RotatedLightEllipse = transform.createTransformedShape(lightEllipse);
@@ -342,7 +342,7 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * »æÖÆÒõÓ°
+	 * ç»˜åˆ¶é˜´å½±
 	 */
 	private void drawShadow(Graphics2D g2d) {
 		Ellipse2D shadowEllipse = new Ellipse2D.Double(10 + R * 0.3, 10 + R * 0.4, R * 0.3 + R * 1.1 * 2,
@@ -353,14 +353,14 @@ public class Ball extends JComponent implements Runnable {
 	}
 
 	/*
-	 * »ñµÃÒõÓ°Paint¶ÔÏó
+	 * è·å¾—é˜´å½±Paintå¯¹è±¡
 	 */
 	private RadialGradientPaint getShadowPaint() {
 		Point2D center = new Point2D.Double(10 + R * 1.4, 10 + R * 1.5);
 		float[] dist = { 0.8f, 1f };
-		// ºÚÉ«£¬ÍêÈ«Í¸Ã÷
+		// é»‘è‰²ï¼Œå®Œå…¨é€æ˜
 		Color c0 = new Color(0, 0, 0, 0);
-		// ºÚÉ«£¬10%Í¸Ã÷
+		// é»‘è‰²ï¼Œ10%é€æ˜
 		Color c1 = new Color(0, 0, 0, 25);
 		Color[] colors = { c1, c0 };
 		return new RadialGradientPaint(center, (float) (R * 1.1), dist, colors, CycleMethod.NO_CYCLE);

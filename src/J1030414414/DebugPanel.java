@@ -10,8 +10,8 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class DebugPanel extends JComponent {
-	private ArrayList<Ball> balls ;//Ğ¡ÇòµÄÒıÓÃ
-	private int[] fps = new int[Bubbles.BALLNUMBER];//½«»òµÃµ½µÄfps±£´æÔÚÊı×éÖĞ
+	private ArrayList<Ball> balls ;//å°çƒçš„å¼•ç”¨
+	private int[] fps = new int[Bubbles.BALLNUMBER];//å°†æˆ–å¾—åˆ°çš„fpsä¿å­˜åœ¨æ•°ç»„ä¸­
 	
 	@Override
 	protected void paintComponent(Graphics arg0) {
@@ -19,9 +19,9 @@ public class DebugPanel extends JComponent {
 		if(Bubbles.DEBUG)
 		{
 			Graphics2D g2d = (Graphics2D) arg0;
-			g2d.setFont(new Font("ËÎÌå", Font.BOLD, 30));
+			g2d.setFont(new Font("å®‹ä½“", Font.BOLD, 30));
 			g2d.setColor(Color.blue);
-			//½«Êı×éÖĞµÄfps»æÖÆµ½ÆÁÄ»ÉÏ
+			//å°†æ•°ç»„ä¸­çš„fpsç»˜åˆ¶åˆ°å±å¹•ä¸Š
 			for(int i = 0;i<balls.size();i++)
 				g2d.drawString("BALL:" + i +" FPS:" + fps[i], 30, 30*(i+1));
 		}
@@ -29,7 +29,7 @@ public class DebugPanel extends JComponent {
 	}
 	public void getFps()
 	{
-		//»ñµÃÃ¿¸öĞ¡ÇòµÄFps
+		//è·å¾—æ¯ä¸ªå°çƒçš„Fps
 		for(int i = 0;i<balls.size();i++)
 		{
 			Ball ball = balls.get(i);

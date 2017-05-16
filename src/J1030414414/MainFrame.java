@@ -12,69 +12,70 @@ import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
-	private PaintingPanel panel;//»æÍ¼Ãæ°å
-	public MainFrame() {
-		super("ÆøÅİÆÁ±£");
+    private PaintingPanel panel;//ç»˜å›¾é¢æ¿
 
-		setUndecorated(true);
-		setExtendedState(MAXIMIZED_BOTH);// È«ÆÁ
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public MainFrame() {
+        super("æ°”æ³¡å±ä¿");
 
-		panel = new PaintingPanel();
-		this.setContentPane(panel);
-		setVisible(true);
-		panel.startAddBallThread(this.getBounds());
-		//°´ESC»ò»Ø³µÍË³ö
-		this.addKeyListener(new KeyAdapter() {
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_ENTER)
-					System.exit(0);
-			}
-		});
-		
-		//Ë«»÷´ò¿ªÉèÖÃ
-		this.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2)
-				{
-					SettingDialog f = new SettingDialog(MainFrame.this);
-					f.setVisible(true);
-					try {
-						panel.image = ImageIO.read(new FileInputStream(f.imagePath));
-					} catch (Exception e1) {
-						panel.image = panel.screenImage;//Ä¬ÈÏÎªÆÁÄ»½ØÍ¼
-					}
-					panel.repaint();
-				}
-					
-				
-			}
-		});
+        setUndecorated(true);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        panel = new PaintingPanel();
+        this.setContentPane(panel);
+        setVisible(true);
+        panel.startAddBallThread(this.getBounds());
+        //æŒ‰ESCæˆ–å›è½¦é€€å‡º
+        this.addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_ENTER)
+                    System.exit(0);
+            }
+        });
+
+        //åŒå‡»æ‰“å¼€è®¾ç½®
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    SettingDialog f = new SettingDialog(MainFrame.this);
+                    f.setVisible(true);
+                    try {
+                        panel.image = ImageIO.read(new FileInputStream(f.imagePath));
+                    } catch (Exception e1) {
+                        panel.image = panel.screenImage;//é»˜è®¤ä¸ºå±å¹•æˆªå›¾
+                    }
+                    panel.repaint();
+                }
 
 
-		//--------------------------Æ¤·ôÉèÖÃ--------------------------------
-		String[] DEFAULT_FONT = new String[] { "Table.font", "TableHeader.font", "CheckBox.font", "Tree.font",
-				"Viewport.font", "ProgressBar.font", "RadioButtonMenuItem.font", "ToolBar.font", "ColorChooser.font",
-				"ToggleButton.font", "Panel.font", "TextArea.font", "Menu.font", "TableHeader.font", "TextField.font",
-				"OptionPane.font", "MenuBar.font", "Button.font", "Label.font", "PasswordField.font", "ScrollPane.font",
-				"MenuItem.font", "ToolTip.font", "List.font", "EditorPane.font", "Table.font", "TabbedPane.font",
-				"RadioButton.font", "CheckBoxMenuItem.font", "TextPane.font", "PopupMenu.font", "TitledBorder.font",
-				"ComboBox.font" };
-		try {
-			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			UIManager.put("RootPane.setupButtonVisible", false);
+            }
+        });
 
-			// µ÷ÕûÄ¬ÈÏ×ÖÌå
-			for (int i = 0; i < DEFAULT_FONT.length; i++)
-				UIManager.put(DEFAULT_FONT[i], new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 14));
-		} catch (Exception e) {
-			try {
-				for (int i = 0; i < DEFAULT_FONT.length; i++)
-					UIManager.put(DEFAULT_FONT[i], new Font("¿¬Ìå", Font.PLAIN, 14));
-			} catch (Exception e0) {
-			}
-		}
-	}
+
+        //--------------------------çš®è‚¤è®¾ç½®--------------------------------
+        String[] DEFAULT_FONT = new String[]{"Table.font", "TableHeader.font", "CheckBox.font", "Tree.font",
+                "Viewport.font", "ProgressBar.font", "RadioButtonMenuItem.font", "ToolBar.font", "ColorChooser.font",
+                "ToggleButton.font", "Panel.font", "TextArea.font", "Menu.font", "TableHeader.font", "TextField.font",
+                "OptionPane.font", "MenuBar.font", "Button.font", "Label.font", "PasswordField.font", "ScrollPane.font",
+                "MenuItem.font", "ToolTip.font", "List.font", "EditorPane.font", "Table.font", "TabbedPane.font",
+                "RadioButton.font", "CheckBoxMenuItem.font", "TextPane.font", "PopupMenu.font", "TitledBorder.font",
+                "ComboBox.font"};
+        try {
+            org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+            UIManager.put("RootPane.setupButtonVisible", false);
+
+            // è°ƒæ•´é»˜è®¤å­—ä½“
+            for (int i = 0; i < DEFAULT_FONT.length; i++)
+                UIManager.put(DEFAULT_FONT[i], new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 14));
+        } catch (Exception e) {
+            try {
+                for (int i = 0; i < DEFAULT_FONT.length; i++)
+                    UIManager.put(DEFAULT_FONT[i], new Font("æ¥·ä½“", Font.PLAIN, 14));
+            } catch (Exception e0) {
+            }
+        }
+    }
 
 
 }

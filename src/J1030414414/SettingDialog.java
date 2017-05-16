@@ -29,10 +29,10 @@ public class SettingDialog extends JDialog {
 	public String imagePath;
 
 	public SettingDialog(JFrame owner) {
-		super(owner, "ÉèÖÃ");
+		super(owner, "è®¾ç½®");
 
 		setModal(true);
-		setLocationRelativeTo(owner); // ´°Ìå¾ÓÖĞ
+		setLocationRelativeTo(owner); // çª—ä½“å±…ä¸­
 		setSize(400, 500);
 		JPanel comp = new JPanel();
 		Container container = getContentPane();
@@ -49,52 +49,52 @@ public class SettingDialog extends JDialog {
 		JPanel settingsPanel = new JPanel();
 		settingsPanel.setLayout(null);
 
-		JCheckBox cDebug = new JCheckBox("DebugÄ£Ê½");
+		JCheckBox cDebug = new JCheckBox("Debugæ¨¡å¼");
 		cDebug.setSelected(Bubbles.DEBUG);
 		cDebug.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.DEBUG = cDebug.isSelected();
 			}
 		});
 		settingsPanel.add(cDebug);
 		cDebug.setBounds(0, 0, 300, 30);
 
-		JCheckBox cShadow = new JCheckBox("ÆôÓÃÒõÓ°");
+		JCheckBox cShadow = new JCheckBox("å¯ç”¨é˜´å½±");
 		cShadow.setSelected(Bubbles.SHADOW);
 		cShadow.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.SHADOW = cShadow.isSelected();
 			}
 		});
 		settingsPanel.add(cShadow);
 		cShadow.setBounds(0, 30, 300, 30);
 
-		JCheckBox cAntiAliasing = new JCheckBox("ÆôÓÃ¿¹¾â³İ");
+		JCheckBox cAntiAliasing = new JCheckBox("å¯ç”¨æŠ—é”¯é½¿");
 		cAntiAliasing.setSelected(Bubbles.ANTIALIASING);
 		cAntiAliasing.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.ANTIALIASING = cAntiAliasing.isSelected();
 			}
 		});
 		settingsPanel.add(cAntiAliasing);
 		cAntiAliasing.setBounds(0, 60, 300, 30);
 
-		JCheckBox cColorChange = new JCheckBox("ÆôÓÃÑÕÉ«¸Ä±ä¶¯»­");
+		JCheckBox cColorChange = new JCheckBox("å¯ç”¨é¢œè‰²æ”¹å˜åŠ¨ç”»");
 		cColorChange.setSelected(Bubbles.COLORCHANGE);
 		cColorChange.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.COLORCHANGE = cColorChange.isSelected();
 			}
 		});
@@ -102,13 +102,13 @@ public class SettingDialog extends JDialog {
 		settingsPanel.add(cColorChange);
 		cColorChange.setBounds(0, 90, 300, 30);
 
-		JCheckBox cGarvity = new JCheckBox("ÆôÓÃÖØÁ¦");
+		JCheckBox cGarvity = new JCheckBox("å¯ç”¨é‡åŠ›");
 		cGarvity.setSelected(Bubbles.GARVITY);
 		cGarvity.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.GARVITY = cGarvity.isSelected();
 			}
 		});
@@ -121,55 +121,55 @@ public class SettingDialog extends JDialog {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.BALLRADIUS = sBallRadius.getValue();
 			}
 		});
 		settingsPanel.add(sBallRadius);
 		sBallRadius.setBounds(100, 150, 200, 30);
-		JLabel lBallRadius = new JLabel("Ğ¡Çò°ë¾¶£º");
+		JLabel lBallRadius = new JLabel("å°çƒåŠå¾„ï¼š");
 		settingsPanel.add(lBallRadius);
 		lBallRadius.setBounds(10, 150, 100, 30);
 
-		String[] strStyles = { "ÎŞÉ«", "Á¢Ìå", "±âÆ½", "Windows" };
+		String[] strStyles = { "æ— è‰²", "ç«‹ä½“", "æ‰å¹³", "Windows" };
 		JComboBox<String> bStyles = new JComboBox<String>(strStyles);
 		bStyles.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				Bubbles.STYLE = bStyles.getSelectedIndex();
 			}
 		});
 		settingsPanel.add(bStyles);
 		bStyles.setBounds(100, 180, 200, 30);
-		JLabel lStyles = new JLabel("Ğ¡ÇòÑùÊ½£º");
+		JLabel lStyles = new JLabel("å°çƒæ ·å¼ï¼š");
 		settingsPanel.add(lStyles);
 		lStyles.setBounds(10, 180, 100, 30);
 
 		settingsPanel.setPreferredSize(new Dimension(400, 210));
 		content.add(settingsPanel, BorderLayout.NORTH);
 
-		// ±éÀúimagesÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
+		// éå†imagesç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 		DefaultListModel<String> s = new DefaultListModel<String>();
 		File root = new File("images");
 		File[] files = root.listFiles();
 		for (File file : files)
 			s.addElement(file.getName());
 
-		// ½«ÎÄ¼şÍ¨¹ıÁĞ±íÏÔÊ¾³öÀ´
+		// å°†æ–‡ä»¶é€šè¿‡åˆ—è¡¨æ˜¾ç¤ºå‡ºæ¥
 		JList<String> l = new JList<String>(s);
-		l.setBorder(BorderFactory.createTitledBorder("ÇëÑ¡Ôñ±³¾°Í¼Æ¬"));
+		l.setBorder(BorderFactory.createTitledBorder("è¯·é€‰æ‹©èƒŒæ™¯å›¾ç‰‡"));
 		l.addListSelectionListener(new ListSelectionListener() {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				imagePath = root.getAbsolutePath() + "\\" + l.getSelectedValue();
+				imagePath = root.getAbsolutePath() + "/" + l.getSelectedValue();
 			}
 		});
 		content.add(l, BorderLayout.CENTER);
 
-		JButton okBtn = new JButton("È·ÈÏ");
+		JButton okBtn = new JButton("ç¡®è®¤");
 		okBtn.addActionListener(new ActionListener() {
 
 			@Override
